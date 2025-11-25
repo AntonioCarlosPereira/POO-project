@@ -1,0 +1,74 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background: #FFDCC4;
+  padding: 30px;
+  border-radius: 15px;
+  width: 320px;
+  text-align: center;
+  color: #E47F47;
+}
+
+.popup-box h2 {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 3px;
+  background: #D9D9D9;
+  border: none;
+  border-radius: 20px;
+}
+
+.radio-group {
+  margin-top: 5px;
+  text-align: left;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.radio-group input {
+  margin-right: 8px;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  background: #FFA166;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.close-link {
+  display: block;
+  margin-top: 15px;
+  color: #8B4D2E;
+  text-decoration: none;
+}
