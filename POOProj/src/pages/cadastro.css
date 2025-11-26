@@ -1,32 +1,28 @@
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Fundo transparente */
+.cadastro-container {
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.35);
+  background: #FFD6B8; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.popup-box {
-  background: #FFDCC4;
+/* Card central */
+.cadastro-card {
+  background: #FFD6B8;
   padding: 30px;
+  width: 350px;
   border-radius: 15px;
-  width: 320px;
-  text-align: center;
-  color: #E47F47;
-}
-
-.popup-box h2 {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
   text-align: left;
-  margin-top: 10px;
+  color: #E67E22;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.cadastro-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 input[type="text"],
@@ -34,41 +30,35 @@ input[type="password"],
 input[type="email"] {
   width: 100%;
   padding: 10px;
-  margin-top: 3px;
-  background: #D9D9D9;
-  border: none;
+  margin: 5px 0 15px;
   border-radius: 20px;
-}
-
-.radio-group {
-  margin-top: 5px;
-  text-align: left;
+  border: none;
+  background: #dcdfe1;
 }
 
 .radio-group label {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
-}
-
-.radio-group input {
-  margin-right: 8px;
+  gap: 8px;
+  margin: 4px 0;
 }
 
 .submit-btn {
-  margin-top: 20px;
-  background: #FFA166;
+  width: 100%;
+  padding: 12px;
+  background: #FF9E5D;
   border: none;
-  padding: 10px 20px;
   border-radius: 20px;
   color: white;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
+  margin-top: 10px;
 }
 
-.close-link {
+.voltar-link {
   display: block;
-  margin-top: 15px;
-  color: #8B4D2E;
+  text-align: center;
+  margin-top: 12px;
+  color: #8a4b2c;
   text-decoration: none;
 }
