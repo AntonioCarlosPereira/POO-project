@@ -55,6 +55,17 @@ input[type="email"] {
   margin-top: 10px;
 }
 
+.button {
+  background-color: #FF9E5D;
+  padding: 8px 22px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
 .voltar-link {
   display: block;
   text-align: center;

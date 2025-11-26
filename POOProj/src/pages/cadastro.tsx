@@ -25,7 +25,7 @@ export default function Cadastro() {
 
         <button className="submit-btn">Finalizar Cadastro</button>
 
-        <Link to="/" className="voltar-link">Voltar</Link>
+        <Link to="/login" className="voltar-link">Voltar</Link>
       </div>
     </div>
   );
