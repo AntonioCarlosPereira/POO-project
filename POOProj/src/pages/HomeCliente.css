@@ -1,10 +1,12 @@
 /* Container geral */
 .home-container {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
   background-color: #f0bfa5; /* Igual à cor da imagem */
-  overflow: hidden;
 }
 
 /* ---- SIDEBAR ---- */
@@ -15,7 +17,9 @@
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-  position: relative; 
+  position: fixed;
+  left: 0;
+  top: 0; 
 }
 
 /* Letras da sidebar */
