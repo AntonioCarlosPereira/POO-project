@@ -1,0 +1,30 @@
+.home-container {
+  height: calc(100vh - 70px); /* Ajusta pra navbar */
+  background-color: #f0bfa5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.menu-button {
+  background-color: #ffa86d;
+  border: none;
+  padding: 18px 60px;
+  border-radius: 20px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.menu-button:hover {
+  transform: scale(1.05);
+}

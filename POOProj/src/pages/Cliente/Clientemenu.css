@@ -1,0 +1,7 @@
+.client-menu-btn {
+  transition: transform 0.15s ease-in-out;
+}
+
+.client-menu-btn:hover {
+  transform: scale(1.03);
+}

@@ -1,0 +1,65 @@
+.welcome-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #ffd1b8; /* salmão */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-box {
+  background-color: white;
+  padding: 35px 45px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+  text-align: center;
+  max-width: 420px;
+}
+
+.welcome-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6a503f;
+  margin-bottom: 10px;
+}
+
+.welcome-subtitle {
+  font-size: 1rem;
+  color: #6a503f;
+  margin-bottom: 25px;
+}
+
+.welcome-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Botão laranja */
+.btn-laranja {
+  background-color: #ffa064;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.btn-laranja:hover {
+  background-color: #ff8538;
+}
+
+/* Botão outlined */
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid #ffa064;
+  color: #ffa064;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.btn-outline:hover {
+  background-color: #ffa064;
+  color: white;
+}

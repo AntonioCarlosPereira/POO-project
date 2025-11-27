@@ -1,0 +1,59 @@
+.historic-container {
+  padding: 20px;
+  margin-top: 70px;
+}
+
+.historic-container h2 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.historic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.historic-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.historic-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.historic-info p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.status.concluído {
+  background: #c8f7c5;
+  color: #1e8c00;
+}
+
+.status.cancelado {
+  background: #ffcccc;
+  color: #b30000;
+}
+
+.empty-message {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 30px;
+  color: #777;
+}

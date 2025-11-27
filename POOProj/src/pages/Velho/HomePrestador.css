@@ -1,0 +1,70 @@
+/* Fundo geral da página (o Bootstrap define body, este é complemento) */
+.home-prestador {
+  min-height: calc(100vh - 70px); /* espaço descontando navbar */
+  background-color: #f9c6a9;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Título Notificações */
+.notificacoes-titulo {
+  color: #e56b2f;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* Barra abaixo do título */
+.notificacoes-barra {
+  width: 100%;
+  height: 6px;
+  background-color: #ff9b64;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Cartão de notificação */
+.notificacao-card {
+  background-color: #ffe1cd !important;
+  border-radius: 20px !important;
+  padding: 12px 14px;
+  border: none !important;
+}
+
+/* Quadrado do serviço */
+.notificacao-imagem {
+  width: 60px;
+  height: 60px;
+  background-color: #ffb691;
+  border-radius: 12px;
+}
+
+/* Botões Aceitar / Negar */
+.btn-aceitar {
+  border-radius: 12px !important;
+}
+
+.btn-negar {
+  border-radius: 12px !important;
+}
+
+/* Botões grandes (Cadastrar / Gerenciar) */
+.botao-principal {
+  background-color: #ff9b64;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 20px;
+  border: none;
+  font-size: 17px;
+  transition: 0.15s;
+}
+
+.botao-principal:hover {
+  filter: brightness(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 576px) {
+  .notificacao-imagem { width: 48px; height: 48px; }
+  .botao-principal { width: 100%; }
+}
