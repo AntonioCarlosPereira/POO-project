@@ -1,0 +1,30 @@
+.prestador-historico-container {
+  background: #ffe1c6;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #d46a2f;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.historico-lista {
+  width: 90%;
+  max-width: 550px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.empty {
+  text-align: center;
+  font-size: 18px;
+  color: #aa5a2f;
+  margin-top: 40px;
+}

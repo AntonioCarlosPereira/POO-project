@@ -11,6 +11,12 @@ import ClientAgendar from "./pages/Cliente/agendar";
 import ClientSearchResults from "./pages/Cliente/Resultados";
 import ClientHistoric from "./pages/Cliente/Historico";
 
+import Perfil from "./pages/Perfil/Perfil";
+
+import PrestadorMenu from "./pages/Prestador/PrestadorMenu";
+import CadastrarServico from "./pages/Prestador/CadastrarServico";
+import Gerenciar from "./pages/Prestador/Gerenciar";
+import HistoricoPrestador from "./pages/Prestador/HistoricoPrestador";
 
 /* Global components */
 import Navbar from "./Components/Navbar";
@@ -37,7 +43,6 @@ export default function App() {
         path="/client/menu"
         element={
           <>
-            <Navbar />
             <ClienteMenu />
           </>
         }
@@ -47,7 +52,6 @@ export default function App() {
         path="/client/agendar"
         element={
           <>
-            <Navbar />
             <ClientAgendar />
           </>
         }
@@ -65,12 +69,61 @@ export default function App() {
       <Route
         path="/client/historico"
         element={
-      <>
-       <Navbar />
-       <ClientHistoric />
-     </>
-       }
-      />  
+         <>
+          <ClientHistoric />
+          </>
+        }
+      />
+
+      <Route
+        path="/perfil"
+        element={
+          <>
+            <Perfil />
+          </>
+        }
+      />
+
+      <Route
+        path="/prestador/menu"
+        element={
+          <>
+            <Navbar />
+            <PrestadorMenu />
+          </>
+        }
+      />
+
+      <Route
+        path="/prestador/cadastrar"
+        element={
+          <>
+            <Navbar />
+            <CadastrarServico />
+          </>
+        }
+      />
+
+      <Route
+        path="/prestador/gerenciar"
+        element={
+          <>
+            <Navbar />
+            <Gerenciar />
+          </>
+        }
+      />
+
+      <Route
+        path="/prestador/historico"
+        element={
+          <>
+            <HistoricoPrestador />
+          </>
+        }
+      />
+
+
 
 
       {/* Caso digite rota inválida */}

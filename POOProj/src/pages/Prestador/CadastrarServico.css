@@ -1,0 +1,31 @@
+.cadastrar-servico {
+  padding: 30px;
+}
+
+.cadastrar-servico h2 {
+  margin-bottom: 20px;
+}
+
+.cadastrar-servico input {
+  width: 100%;
+  max-width: 350px;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: block;
+}
+
+.cadastrar-servico button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  background: #4caf50;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cadastrar-servico button:hover {
+  background: #3e9140;
+}

@@ -28,7 +28,7 @@ export default function Navbar() {
 
           {/* CLIENTE */}
           <li className="nav-item">
-            <Link className="nav-link" to="/cliente">Cliente</Link>
+            <Link className="nav-link" to="/client/menu">Cliente</Link>
           </li>
 
           {/* PRESTADOR — aparece só se o tipo for prestador ou proprietario */}

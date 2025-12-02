@@ -1,0 +1,16 @@
+.gerenciar-page {
+  padding: 30px;
+}
+
+.gerenciar-page h2 {
+  margin-bottom: 20px;
+}
+
+.sem-solicitacoes {
+  color: #777;
+  font-style: italic;
+}
+
+.notification-card {
+  margin-bottom: 15px;
+}
