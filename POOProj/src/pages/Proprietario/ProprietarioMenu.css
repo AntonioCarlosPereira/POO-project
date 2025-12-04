@@ -1,0 +1,145 @@
+.proprietario-container {
+  min-height: calc(100vh - 56px);
+  background-color: #ffd1b8;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.proprietario-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6a503f;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.btn-criar-estabelecimento {
+  background-color: #ffa064;
+  border: none;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-criar-estabelecimento:hover {
+  background-color: #ff8538;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 60px;
+  color: #6a503f;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.empty-subtitle {
+  font-size: 0.95rem;
+  color: #8a6d5f;
+  font-style: italic;
+}
+
+.estabelecimentos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.estabelecimento-card {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.estabelecimento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.estabelecimento-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #ffa064;
+  border-radius: 12px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.estabelecimento-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.estabelecimento-info h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #6a503f;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.estabelecimento-info p {
+  font-size: 0.9rem;
+  color: #8a6d5f;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-gerenciar {
+  background-color: #ffa064;
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  margin-left: 15px;
+}
+
+.btn-gerenciar:hover {
+  background-color: #ff8538;
+  transform: scale(1.05);
+}
+
+@media (max-width: 576px) {
+  .estabelecimento-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .estabelecimento-icon {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .btn-gerenciar {
+    margin-left: 0;
+    margin-top: 15px;
+    width: 100%;
+  }
+}
