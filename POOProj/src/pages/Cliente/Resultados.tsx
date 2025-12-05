@@ -65,6 +65,7 @@ export default function Resultados() {
               horario={s.horario}
               local={s.local}
               preco={s.preco}
+              extra={s.extra}
             />
           ))}
         </div>

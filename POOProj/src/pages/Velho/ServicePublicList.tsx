@@ -1,4 +1,4 @@
-import type { Service } from "../types";
+import type { Service } from "../../types";
 import ServiceCard from "./ServicePublicCard";
 import "./ServicePublicList.css";
 

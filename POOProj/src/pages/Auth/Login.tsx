@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./login.css";
+import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -8,12 +8,22 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Aqui você vai substituir pela lógica do seu backend
-    console.log("Email:", email);
-    console.log("Senha:", senha);
+    const loginData = {email, password: senha}
+    try{
+      const res = await fetch("http://localhost:4040/login", {
+      method: "POST",
+      headers:{"Content-Type": "application/json"},
+      body: JSON.stringify(loginData),
+      })
+
+    }
+    catch(err){
+      console.error("Erro ao fazer login.")
+    }
 
     // Exemplo de redirecionamento:
     navigate("/menu");

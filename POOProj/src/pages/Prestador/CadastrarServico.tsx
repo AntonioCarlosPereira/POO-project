@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./cadastrarServico.css";
+import "./CadastrarServico.css";
 
 interface ServicoForm {
   servico: string;

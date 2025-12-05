@@ -7,7 +7,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "ts-node-dev --respawn --transpile-only ./src/index.ts"
+    "server": "ts-node-dev --respawn --transpile-only ./index.ts"
   },
   "dependencies": {
     "@prisma/client": "^7.1.0",

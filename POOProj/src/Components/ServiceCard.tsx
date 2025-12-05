@@ -1,5 +1,5 @@
 import React from "react";
-import "./servicecard.css";
+import "./ServiceCard.css";
 
 export default function ServiceCard({ servico, horario, local, preco, extra }) {
   return (
