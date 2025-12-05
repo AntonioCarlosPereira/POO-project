@@ -23,7 +23,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "/home/davesz/Área de trabalho/Trabalho de POO/POO-project/POOProj/generated/prisma",
+      "value": "C:\\Users\\caio1\\Desktop\\POO\\POO-project\\POOProj\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -32,12 +32,12 @@ const config: runtime.GetPrismaClientConfig = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/davesz/Área de trabalho/Trabalho de POO/POO-project/POOProj/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\caio1\\Desktop\\POO\\POO-project\\POOProj\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../prisma",
@@ -47,6 +47,7 @@ const config: runtime.GetPrismaClientConfig = {
     "db"
   ],
   "activeProvider": "sqlite",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
