@@ -24,8 +24,11 @@ export default function ProprietarioMenu() {
     setEstabelecimentos(mockData);
   }, []);
 
-  const handleCriarEstabelecimento = () => {
-    alert("Funcionalidade de criar estabelecimento em desenvolvimento");
+  const handleCriarEstabelecimento = () => {// Verifique no console do navegador se o ID está correto
+    console.log(`Navegando para a tela de criar estabelecimento`);
+    
+    // A rota correta é /proprietario/estabelecimento/:id
+    navigate(`/proprietario/estabelecimento/novo`);
   };
 
   const handleGerenciar = (id: number) => {

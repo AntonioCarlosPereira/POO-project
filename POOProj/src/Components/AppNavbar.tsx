@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 export default function AppNavbar() {
     const navigate = useNavigate();

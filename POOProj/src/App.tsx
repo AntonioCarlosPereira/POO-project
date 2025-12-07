@@ -21,6 +21,8 @@ import ProprietarioMenu from "./pages/Proprietario/ProprietarioMenu"
 import GerenciarProprietario from "./pages/Proprietario/GerenciarProprietario"
 import EstabelecimentoMenu from "./pages/Proprietario/EstabelecimentoMenu"
 import CadastrarServicoProprietario from "./pages/Proprietario/CadastrarServicoProprietario"
+import CriarEstabelecimento from "./pages/Proprietario/criar_estabelecimento";
+
 
 export default function App() {
   return (
@@ -130,6 +132,16 @@ export default function App() {
         element={
           <>
             <CadastrarServicoProprietario />
+          </>
+        }
+      />
+
+      {/* Rota para Cadastrar Serviço em um Estabelecimento (ex: /proprietario/estabelecimento/1/cadastrar) */}
+      <Route
+        path="/proprietario/estabelecimento/novo"
+        element={
+          <>
+            <CriarEstabelecimento />
           </>
         }
       />
