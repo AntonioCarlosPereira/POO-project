@@ -251,6 +251,186 @@ app.get("/", (req: Request, res:Response)=>{
 })  
 
 
+// ==========================================
+//  NOVA ROTA: CRIAR SERVIÇO
+// ==========================================
+app.post('/services', async (req: Request, res: Response) => {
+    try {
+        const { name, description, price, duration } = req.body;
+
+        // Validação: Garante que os dados principais vieram
+        if (!name || !price || !duration) {
+            return res.status(400).json({
+                success: false,
+                message: "Faltam dados: nome, preço e duração são obrigatórios.",
+                data: req.body
+            });
+        }
+
+        // Salva no banco de dados
+        const newService = await prisma.service.create({
+            data: {
+                name: name,
+                description: description || "", // Descrição opcional
+                price: parseFloat(price),       // Converte texto pra número se precisar
+                duration: duration
+            }
+        });
+
+        // Resposta de sucesso
+        return res.status(201).json({
+            success: true,
+            message: "Serviço criado com sucesso!",
+            data: newService
+        });
+
+    } catch (err) {
+        console.error("Erro ao criar serviço:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Erro interno ao criar serviço.",
+            data: null
+        });
+    }
+});
+
+
+// ==========================================
+//  NOVA ROTA: CRIAR AGENDAMENTO
+// ==========================================
+app.post('/appointments', async (req: Request, res: Response) => {
+    try {
+        const { clientUserId, workerUserId, serviceId, placeId, date, hour } = req.body;
+
+        // 1. Validação básica
+        if (!clientUserId || !workerUserId || !serviceId || !placeId || !date || !hour) {
+            return res.status(400).json({
+                success: false,
+                message: "Faltam dados. Necessário: cliente, prestador, serviço, local, data e hora.",
+                data: req.body
+            });
+        }
+
+        // 2. Validação Lógica (Opcional, mas recomendada)
+        // Aqui você poderia checar se o horário já está ocupado antes de criar
+        // const busy = await prisma.appointment.findFirst({ where: { workerUserId, date, hour } });
+        // if (busy) { return res.status(400).json({ success: false, message: "Horário indisponível." }); }
+
+        // 3. Cria o Agendamento
+        const newAppointment = await prisma.appointment.create({
+            data: {
+                clientUserId: Number(clientUserId),
+                workerUserId: Number(workerUserId),
+                serviceId: Number(serviceId),
+                placeId: Number(placeId),
+                date: date,
+                hour: hour,
+                status: 'solicitado' // Status inicial padrão
+            }
+        });
+
+        return res.status(201).json({
+            success: true,
+            message: "Agendamento solicitado com sucesso!",
+            data: newAppointment
+        });
+
+    } catch (err) {
+        console.error("Erro ao criar agendamento:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Erro interno ao agendar.",
+            data: null
+        });
+    }
+});
+
+// ==========================================
+//  NOVA ROTA: CRIAR ESTABELECIMENTO (PLACE)
+// ==========================================
+app.post('/places', async (req: Request, res: Response) => {
+    try {
+        const { userId, name, address, cnpj } = req.body;
+
+        // 1. Validação
+        if (!userId || !name || !address || !cnpj) {
+            return res.status(400).json({
+                success: false,
+                message: "Faltam dados: userId, nome, endereço e CNPJ são obrigatórios.",
+                data: req.body
+            });
+        }
+
+        // 2. Criação
+        const newPlace = await prisma.place.create({
+            data: {
+                userId: Number(userId), // O dono do estabelecimento
+                name: name,
+                address: address,
+                cnpj: cnpj
+            }
+        });
+
+        return res.status(201).json({
+            success: true,
+            message: "Estabelecimento criado com sucesso!",
+            data: newPlace
+        });
+
+    } catch (err) {
+        console.error("Erro ao criar estabelecimento:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Erro interno ao criar estabelecimento."
+        });
+    }
+});
+
+// ==========================================
+//  NOVA ROTA: ATUALIZAR STATUS DO AGENDAMENTO
+// ==========================================
+app.patch('/updateAppointment', async (req: Request, res: Response) => {
+    try {
+        const { appointmentId, status } = req.body;
+
+        // 1. Validação básica
+        if (!appointmentId || !status) {
+            return res.status(400).json({
+                success: false,
+                message: "Informe o ID do agendamento e o novo status."
+            });
+        }
+
+        // 2. Validação do Status (tem que ser um dos permitidos pelo banco)
+        const statusPermitidos = ['solicitado', 'aceito', 'recusado', 'concluido'];
+        if (!statusPermitidos.includes(status)) {
+            return res.status(400).json({
+                success: false,
+                message: "Status inválido. Use: solicitado, aceito, recusado ou concluido."
+            });
+        }
+
+        // 3. Atualiza no Banco
+        const updatedAppointment = await prisma.appointment.update({
+            where: { id: Number(appointmentId) },
+            data: { status: status }
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: `Status atualizado para: ${status}`,
+            data: updatedAppointment
+        });
+
+    } catch (err) {
+        console.error("Erro ao atualizar agendamento:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Erro ao atualizar status. Verifique se o ID existe."
+        });
+    }
+});
+
 app.listen(4040, ()=>{
     console.log("Server rodando.")
 })
