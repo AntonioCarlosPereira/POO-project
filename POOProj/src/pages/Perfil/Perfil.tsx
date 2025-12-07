@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../Components/AppNavbar";
 import "./Perfil.css";
 import {jwtDecode} from "jwt-decode";
 
 interface UserData {
   email: string;
+  id: number,
   usuario: string;
   tipo: string;
 }
@@ -26,8 +27,15 @@ export default function Perfil() {
     const token = localStorage.getItem("token");
     if (token) {
       const decode:any = jwtDecode(token);
-      userData.usuario = decode.name
-      userData.email = decode.email
+      console.log(`Aqui:${decode.name}, ${decode.email}`)
+      const tokenData: UserData = {
+        email: decode.email,
+        usuario: decode.name,
+        id: decode.id,
+        tipo: ""
+
+      }
+      setUserData(tokenData)
 
     } else {
       // Se não houver usuário logado, redireciona para login
@@ -49,7 +57,7 @@ export default function Perfil() {
     setIsEditing(false);
   };
 
-  const handleSalvar = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSalvar = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!senhaConfirmacao) {
@@ -57,27 +65,29 @@ export default function Perfil() {
       return;
     }
 
-    // Aqui você fará a validação com o backend
-    // Por enquanto, apenas simula a atualização
-    console.log("Novos dados:", {
-      usuario: novoUsuario,
-      email: novoEmail,
-      senha: senhaConfirmacao
-    });
+    try{
+      const newData = {novoUsuario, novoEmail, senhaConfirmacao, userData}
+      console.log(newData)
+      const res = await fetch("/editPerfil",{
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newData)
+      })
+      const data = await res.json()
+      if(data.success){
+        localStorage.clear()
+        setSenhaConfirmacao("");
+        setIsEditing(false);
+        alert("Perfil atualizado com sucesso! Logue novamente.");
+        navigate("/login")
 
-    // Atualiza o localStorage (substituir por chamada ao backend)
-    const updatedUser = {
-      ...userData,
-      usuario: novoUsuario,
-      email: novoEmail
-    };
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-    setUserData(updatedUser);
+      }
+    }
+    catch(err){
+      console.log(`Erro ${err}`)
+    }
 
-    // Limpa senha e sai do modo edição
-    setSenhaConfirmacao("");
-    setIsEditing(false);
-    alert("Perfil atualizado com sucesso!");
+
   };
 
   const handleSairDaConta = () => {

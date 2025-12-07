@@ -26,7 +26,7 @@ export default function Register() {
       }
     }
     catch(err){
-      console.error("Erro ao fazer login.")
+      console.error("Erro ao fazer cadastro.")
     }
 
     

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../Components/AppNavbar";
 import "./GerenciarProprietario.css";
 
 interface Servico {

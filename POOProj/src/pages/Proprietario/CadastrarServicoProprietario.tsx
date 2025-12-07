@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../Components/AppNavbar";
 import "./CadastrarServicoProprietario.css";
 
 export default function CadastrarServicoProprietario() {
