@@ -1,0 +1,59 @@
+/* HistoryItemCard.css */
+
+.history-item-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #ff640033; /* Borda Laranja clara */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    text-align: left;
+}
+
+.service-title {
+    color: #ff6400; /* Título Laranja Escuro */
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.history-info p {
+    margin: 0;
+    line-height: 1.5;
+    color: #6a503f; /* Texto Marrom Escuro */
+}
+
+/* Badge de Status */
+.status-badge {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+/* --- Cores dos Status (Mantenho o padrão) --- */
+
+.status-concluido {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.status-recusado {
+    background-color: #FF6400; /* Laranja Escuro */
+    color: white;
+}
+
+.status-solicitado {
+    background-color: #ffb86f; /* Laranja Médio */
+    color: #6a503f;
+}
+
+.status-aceito {
+    background-color: #3e8e41; /* Verde Escuro */
+    color: white;
+}

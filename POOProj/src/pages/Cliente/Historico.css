@@ -1,7 +1,10 @@
+/* Histórico (Ajustado ao Modelo da Segunda Imagem) */
+
 .appointments-container {
+  /* Fundo Principal: Laranja Claro (#ffd1b8) */
+  background-color: #ffd1b8; 
   padding: 20px;
   padding-top: 70px; 
-  background-color: #fcfcfc; 
   min-height: calc(100vh - 70px); 
 }
 
@@ -9,17 +12,18 @@
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
-  color: #6a503f; 
+  color: #6a503f; /* Título: Marrom Escuro */
   margin-bottom: 30px;
 }
 
+/* --- BARRA DE FILTROS --- */
 .status-filter-nav {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 0; /* Remove margem para a linha divisória ficar próxima */
   padding: 5px;
-  border-bottom: 2px solid #ff6400; 
+  /* Remove border-bottom aqui para usar a linha separadora abaixo dos botões */
 }
 
 .status-filter-nav button {
@@ -28,7 +32,7 @@
   padding: 8px 15px;
   font-weight: 600;
   cursor: pointer;
-  color: #6a503f; 
+  color: #6a503f; /* Texto do Botão: Marrom Escuro */
   border-bottom: 3px solid transparent;
   transition: all 0.3s;
   text-transform: capitalize;
@@ -36,15 +40,26 @@
 }
 
 .status-filter-nav button:hover:not(.active) {
-    color: #ff6400; 
+    color: #ff6400; /* Hover: Laranja Escuro */
 }
 
 .status-filter-nav button.active {
-  color: #ff6400;
-  border-bottom: 3px solid #ff6400;
+  color: #ff6400; /* Ativo: Laranja Escuro */
+  border-bottom: 3px solid #ff6400; /* Linha Laranja Escuro abaixo do texto ativo */
   font-weight: 700;
 }
 
+/* Linha Divisória Laranja COMPLETA (separada dos botões) */
+.filter-separator {
+    border: 0;
+    height: 2px; /* Espessura da linha divisória */
+    background-color: #ff6400; /* Laranja Escuro */
+    opacity: 1;
+    max-width: 800px;
+    margin: 0 auto 40px auto; /* Centraliza a linha e adiciona margem inferior */
+}
+
+/* --- LISTA DE CARDS --- */
 .historic-list {
   display: flex;
   flex-direction: column;
@@ -58,11 +73,12 @@
   align-items: center; 
   justify-content: space-between; 
   
-  background-color: #ffd1b8; 
+  /* Fundo do Card: Branco (#ffffff) */
+  background-color: #ffffff; 
   padding: 15px 20px;
   border-radius: 18px; 
   box-shadow: 0 0 8px rgba(0,0,0,0.1); 
-  border: none; 
+  border: 1px solid #ff640033; /* Borda sutil Laranja Claro */ 
 
   max-width: 100%;
   min-width: 350px;
@@ -74,10 +90,13 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
+/* Ícone/Destaque Esquerdo (Removido o bloco completo da primeira imagem) */
+/* Se este bloco for usado, ele deve ter suas cores: */
+/*
 .card-icon {
   width: 40px;
   height: 40px;
-  background-color: #ffa064; 
+  background-color: #ff6400; 
   border-radius: 10px;
   margin-right: 20px;
   flex-shrink: 0;
@@ -87,7 +106,9 @@
   font-size: 1.5rem;
   color: white;
 }
+*/
 
+/* Informações do Card */
 .historic-info {
   display: flex;
   flex-direction: column;
@@ -102,7 +123,7 @@
   margin: 0;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ff6400; 
+  color: #ff6400; /* Título no Card: Laranja Escuro */
 }
 
 .historic-info p {
@@ -111,6 +132,7 @@
   color: #6a503f;
 }
 
+/* Badge de Status */
 .status {
   flex-shrink: 0; 
   padding: 6px 15px;
@@ -119,41 +141,40 @@
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.85rem;
-  background: #ffffff;
-  border: 1px solid; 
+  /* Fundo do Badge: Branco (Para que a cor do status seja a borda/texto) */
+  background: #ffffff; 
+  border: 1px solid; /* A cor da borda será definida pela classe de status */
   text-align: center;
 }
 
+/* Cores de Status Específicas */
+
 .status.solicitado {
-  color: #ffb300; 
-  border-color: #ffb300;
+  color: #ff6400; /* Laranja Escuro para Aguardando */
+  border-color: #ff6400;
 }
 
 .status.aceito {
-  color: #ffb300; 
-  border-color: #ffb300;
+  color: #3e8e41; /* Verde Escuro */ 
+  border-color: #3e8e41;
 }
 
 .status.concluído {
-  color: #38a838;
+  color: #38a838; /* Verde */
   border-color: #38a838;
 }
 
-.status.recusado {
-  color: #d14747;
+.status.recusado, .status.cancelado {
+  color: #d14747; /* Vermelho para Recusado/Cancelado */
   border-color: #d14747;
 }
 
 .status.agendado {
-  color: #ffb300;
-  border-color: #ffb300;
+  color: #ff6400;
+  border-color: #ff6400;
 }
 
-.status.cancelado {
-  color: #d14747;
-  border-color: #d14747;
-}
-
+/* Mensagem de Lista Vazia */
 .empty-message {
   text-align: center;
   font-size: 1.1rem;

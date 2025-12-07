@@ -1,30 +1,114 @@
+/* HistoricoPrestador.css */
+
+/* --- PADRÃO GERAL E CORREÇÃO DE OVERFLOW --- */
+body, html {
+    overflow-x: hidden; 
+}
+
+/* Container Principal: Fundo Laranja Claro */
 .prestador-historico-container {
-  background: #ffe1c6;
-  min-height: 100vh;
-  padding: 20px;
+    padding: 20px;
+    padding-top: 70px; 
+    background-color: #ffd1b8; /* Laranja Claro */
+    min-height: calc(100vh - 70px); 
+    text-align: center; 
 }
 
+/* Título Principal */
 .title {
-  text-align: center;
-  font-size: 26px;
-  font-weight: bold;
-  color: #d46a2f;
-  margin-top: 20px;
-  margin-bottom: 25px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #6a503f; /* Marrom/Laranja Escuro */
+    margin-bottom: 30px;
 }
 
-.historico-lista {
-  width: 90%;
-  max-width: 550px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* --- BARRA DE FILTROS (Status Tabs) --- */
+.status-filter-nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px; 
+    margin-bottom: 10px;
+    padding: 0 10px;
+    flex-wrap: wrap;
 }
 
-.empty {
-  text-align: center;
-  font-size: 18px;
-  color: #aa5a2f;
-  margin-top: 40px;
+.status-filter-nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #6a503f; /* Texto Padrão: Marrom/Laranja Escuro */
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.status-filter-nav button:hover:not(.active) {
+    color: #ff6400; /* Laranja Escuro */
+}
+
+/* Indicador Ativo (Sublinhado Laranja Escuro) */
+.status-filter-nav button.active {
+    color: #ff6400; 
+    /* Simula a linha que aparece na imagem de referência */
+    border-bottom: 3px solid #ff6400; 
+    padding-bottom: 2px;
+}
+
+/* Linha Divisória Laranja abaixo dos filtros */
+.filter-separator {
+    border: 0;
+    height: 1px;
+    background-color: #ff6400; /* Laranja Escuro */
+    opacity: 1;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+
+/* --- CONTEÚDO DA LISTA E CENTRALIZAÇÃO --- */
+.list-content-wrapper {
+    /* Container para mensagem vazia ou lista - centraliza o bloco */
+    max-width: 600px; /* Largura apropriada para o ServiceCard */
+    margin: 0 auto;
+}
+
+.historic-list {
+    /* Garante que os ServiceCards fiquem dispostos verticalmente */
+    display: flex;
+    flex-direction: column;
+    /* Centraliza os próprios ServiceCards dentro do list-content-wrapper */
+    align-items: center; 
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+.empty-message {
+    color: #6a503f;
+    font-size: 1.1rem;
+    padding: 40px 0;
+}
+
+/* --- ESTILOS DE STATUS (Para estilizar o ServiceCard, se ele usar essas classes) --- */
+/* Estes estilos devem ser espelhados dentro do ServiceCard para funcionar */
+/* (Cores: Verde para Concluído/Aceito; Laranja para Recusado/Solicitado) */
+
+.status-concluído {
+    background-color: #4CAF50; 
+    color: white;
+}
+
+.status-recusado {
+    background-color: #FF6400; 
+    color: white;
+}
+
+.status-solicitado {
+    background-color: #ffb86f; 
+    color: #6a503f;
+}
+
+.status-aceito {
+    background-color: #3e8e41; 
+    color: white;
 }

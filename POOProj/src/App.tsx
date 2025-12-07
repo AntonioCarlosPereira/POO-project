@@ -11,8 +11,6 @@ import Perfil from "./pages/Perfil/Perfil";
 import ClientAgendar from "./pages/Cliente/agendar";
 import ClientHistoric from "./pages/Cliente/Historico";
 
-
-import PrestadorMenu from "./pages/Prestador/PrestadorMenu";
 import CadastrarServico from "./pages/Prestador/CadastrarServico";
 import Gerenciar from "./pages/Prestador/Gerenciar";
 import HistoricoPrestador from "./pages/Prestador/HistoricoPrestador";
@@ -55,15 +53,6 @@ export default function App() {
         element={
           <>
             <Perfil />
-          </>
-        }
-      />
-
-      <Route
-        path="/prestador/menu"
-        element={
-          <>
-            <PrestadorMenu />
           </>
         }
       />
