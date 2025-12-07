@@ -5,23 +5,34 @@ import "./Register.css";
 export default function Register() {
   const navigate = useNavigate();
 
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [tipo, setTipo] = useState("cliente");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Aqui futuramente vai a lógica do backend
-    console.log({
-      nome,
-      email,
-      senha,
-      tipo,
-    });
+    const RegisterData = { email, password, name };
 
-    navigate("/login");
+    try {
+      const res = await fetch("http://localhost:3001/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(RegisterData)
+      });
+      
+      const data = await res.json();
+
+      if (res.ok) {
+        navigate("/login");
+      } else {
+        console.error("Erro no registro:", data.error || data.message);
+        alert(data.error || "Erro ao tentar registrar.");
+      }
+    } catch(err) {
+      console.error("Erro ao conectar ou processar o registro.", err);
+      alert("Não foi possível conectar ao servidor.");
+    }
   };
 
   return (
@@ -35,8 +46,8 @@ export default function Register() {
           <input
             type="text"
             className="register-input"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            value={name}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} 
             required
           />
 
@@ -45,7 +56,7 @@ export default function Register() {
             type="email"
             className="register-input"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             required
           />
 
@@ -53,21 +64,10 @@ export default function Register() {
           <input
             type="password"
             className="register-input"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
+            value={password}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} 
             required
           />
-
-          <label className="register-label">Tipo de Conta</label>
-          <select
-            className="register-input"
-            value={tipo}
-            onChange={(e) => setTipo(e.target.value)}
-          >
-            <option value="cliente">Cliente</option>
-            <option value="prestador">Prestador de Serviço</option>
-            <option value="proprietario">Proprietário</option>
-          </select>
 
           <button type="submit" className="btn-laranja register-btn">
             Registrar

@@ -18,7 +18,7 @@ export default function Welcome() {
             Login
           </button>
 
-          <button className="btn-outline" onClick={() => navigate("/cadastro")}>
+          <button className="btn-outline" onClick={() => navigate("/register")}>
             Criar Conta
           </button>
         </div>

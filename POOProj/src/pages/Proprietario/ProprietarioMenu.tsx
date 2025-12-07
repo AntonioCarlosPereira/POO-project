@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../Components/AppNavbar";
 import "./ProprietarioMenu.css";
 
 interface Estabelecimento {
@@ -14,22 +14,25 @@ export default function ProprietarioMenu() {
   const [estabelecimentos, setEstabelecimentos] = useState<Estabelecimento[]>([]);
 
   useEffect(() => {
-    // Aqui futuramente virá a chamada à API
-    // Por enquanto, dados mockados para exemplo
+    // Dados mockados
     const mockData: Estabelecimento[] = [
       { id: 1, nome: "Pet Shop Central", endereco: "Rua das Flores, 123" },
       { id: 2, nome: "Clínica Veterinária", endereco: "Av. Brasil, 456" },
+      { id: 3, nome: "Estética Animal Alpha", endereco: "Rua da Paz, 789" }, // Adicionado mais um para teste
     ];
     
     setEstabelecimentos(mockData);
   }, []);
 
   const handleCriarEstabelecimento = () => {
-    // Navega para tela de criação (a implementar futuramente)
     alert("Funcionalidade de criar estabelecimento em desenvolvimento");
   };
 
   const handleGerenciar = (id: number) => {
+    // Verifique no console do navegador se o ID está correto
+    console.log(`Navegando para o estabelecimento com ID: ${id}`);
+    
+    // A rota correta é /proprietario/estabelecimento/:id
     navigate(`/proprietario/estabelecimento/${id}`);
   };
 

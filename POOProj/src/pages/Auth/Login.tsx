@@ -6,27 +6,30 @@ export default function Login() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [password, setSenha] = useState("");
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Aqui você vai substituir pela lógica do seu backend
-    const loginData = {email, password: senha}
+    const loginData = {email, password: password}
+    
     try{
-      const res = await fetch("http://localhost:4040/login", {
+      const res = await fetch("/login", {
       method: "POST",
       headers:{"Content-Type": "application/json"},
       body: JSON.stringify(loginData),
       })
+      const data = await res.json()
+      if(data.success){
+        localStorage.setItem("token", data.token)
+        localStorage.setItem("userId", data.userId)      
+        navigate("/client/menu");
+      }
 
     }
     catch(err){
       console.error("Erro ao fazer login.")
-    }
-
-    // Exemplo de redirecionamento:
-    navigate("/menu");
+    }    
   };
 
   return (
@@ -49,7 +52,7 @@ export default function Login() {
           <input
             type="password"
             className="login-input"
-            value={senha}
+            value={password}
             onChange={(e) => setSenha(e.target.value)}
             required
           />
