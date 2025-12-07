@@ -33,7 +33,7 @@ export default function ClientMenu() {
 
           <button
             className="btn btn-secondary btn-lg w-100"
-            onClick={() => navigate("/profile")}
+            onClick={() => navigate("/perfil")}
           >
             Perfil
           </button>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar";
 import "./Perfil.css";
+import {jwtDecode} from "jwt-decode";
 
 interface UserData {
   email: string;
@@ -22,12 +23,12 @@ export default function Perfil() {
 
   useEffect(() => {
     // Busca dados do localStorage
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const user = JSON.parse(storedUser);
-      setUserData(user);
-      setNovoUsuario(user.usuario || "");
-      setNovoEmail(user.email || "");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decode:any = jwtDecode(token);
+      userData.usuario = decode.name
+      userData.email = decode.email
+
     } else {
       // Se não houver usuário logado, redireciona para login
       navigate("/login");
