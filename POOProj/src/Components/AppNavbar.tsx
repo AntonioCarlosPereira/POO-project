@@ -37,6 +37,9 @@ export default function AppNavbar() {
                             <NavDropdown.Item as={Link} to="/prestador/cadastrar">
                                 Cadastrar serviço
                             </NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/prestador/gerenciar">
+                                Gerenciar notificações
+                            </NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/prestador/historico">
                                 Histórico
                             </NavDropdown.Item>
