@@ -29,7 +29,7 @@ export default function AppNavbar() {
                                 Agendar serviço
                             </NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/client/historico">
-                                Histórico
+                                Meus agendamentos
                             </NavDropdown.Item>
                         </NavDropdown>
 

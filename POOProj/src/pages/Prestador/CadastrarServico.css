@@ -1,31 +1,101 @@
+/* --- CORREÇÃO DE OVERFLOW HORIZONTAL GERAL --- */
+body, html {
+    overflow-x: hidden; 
+}
+
+/* --- ESTILOS DO POP-UP DE SUCESSO --- */
+.custom-popup-success {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050; 
+    
+    background-color: #4caf50; 
+    color: white; 
+    
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    animation: fadeout 3s forwards; 
+}
+
+@keyframes fadeout {
+    0% { opacity: 1; }
+    80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+/* --- ESTILOS PRINCIPAIS DO CONTAINER (FUNDO LARANJA CLARO) --- */
+.client-agendar-container {
+  padding: 20px;
+  padding-top: 70px; 
+  background-color: #ffd1b8; /* Laranja Claro */
+  min-height: calc(100vh - 70px); 
+}
+
+/* Título: Laranja Escuro/Marrom */
+.client-agendar-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6a503f; 
+  margin-bottom: 30px;
+}
+
+/* Card do Formulário: Fundo Branco */
+.card {
+  background-color: #ffffff; 
+  border: 1px solid #ff640033; 
+  border-radius: 18px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+/* Rótulos: Marrom-escuro */
+.form-label {
+    color: #6a503f;
+    font-weight: 600;
+}
+
+/* Campos de Input: Borda neutra, realce Laranja Escuro */
+.form-control, .form-select {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: all 0.2s;
+    color: #6a503f;
+    background-color: #ffffff; 
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #ff6400; 
+    box-shadow: 0 0 0 0.25rem rgba(255, 100, 0, 0.25); 
+}
+
+/* Botão de Submissão: Laranja Escuro */
+.btn-primary {
+    background: #ff6400; 
+    border-color: #ff6400;
+    color: white;
+    font-weight: 700;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #ffa064; 
+    border-color: #ffa064;
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    cursor: not-allowed;
+    color: #f7f7f7;
+}
+
 .cadastrar-servico {
   padding: 30px;
-}
-
-.cadastrar-servico h2 {
-  margin-bottom: 20px;
-}
-
-.cadastrar-servico input {
-  width: 100%;
-  max-width: 350px;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  display: block;
-}
-
-.cadastrar-servico button {
-  margin-top: 12px;
-  padding: 12px 18px;
-  background: #4caf50;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.cadastrar-servico button:hover {
-  background: #3e9140;
 }

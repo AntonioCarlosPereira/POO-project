@@ -58,7 +58,6 @@ model Appointment{
   worker User @relation("WorkerRelation",fields: [workerUserId], references: [id])
   service Service @relation(fields: [serviceId], references: [id])
   place Place @relation(fields: [placeId], references: [id])
-
 }
 
 model Schedule{
