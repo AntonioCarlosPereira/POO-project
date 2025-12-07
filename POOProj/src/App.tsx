@@ -12,18 +12,19 @@ import ClientHistoric from "./pages/Cliente/Historico";
 
 import Perfil from "./pages/Perfil/Perfil";
 
-import ClientAgendar from "./pages/Cliente/agendar";
-import ClientHistoric from "./pages/Cliente/Historico";
 
-
+import CadastrarServicoProprietario from "./pages/Proprietario/CadastrarServicoProprietario";
+import GerenciarProprietario from "./pages/Proprietario/GerenciarProprietario";
 import PrestadorMenu from "./pages/Prestador/PrestadorMenu";
 import CadastrarServico from "./pages/Prestador/CadastrarServico";
 import Gerenciar from "./pages/Prestador/Gerenciar";
 import HistoricoPrestador from "./pages/Prestador/HistoricoPrestador";
+import EstabelecimentoMenu from "./pages/Proprietario/EstabelecimentoMenu";
 import ProprietarioMenu from "./pages/Proprietario/ProprietarioMenu"
 
 /* Global components */
 import Navbar from "./Components/AppNavbar";
+import ClientMenu from "./pages/Cliente/Clientemenu";
 
 export default function App() {
   return (
@@ -38,6 +39,14 @@ export default function App() {
         element={
           <>
             <ClientAgendar />
+          </>
+        }
+      />
+      <Route
+        path="/client/menu"
+        element={
+          <>
+            <ClientMenu />
           </>
         }
       />

@@ -1,13 +1,34 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Welcome.css";
+import { verify } from "crypto";
 
 export default function Welcome() {
   const navigate = useNavigate();
   useEffect(()=>{
-    if(localStorage.getItem("token")){
-      navigate("/perfil")
-    }
+  
+      const token = localStorage.getItem("token")
+      if(token){
+        (async()=>{
+          
+          try{
+            const res = await fetch("/tokenVerification", {
+              method: "POST",
+              headers: {"Content-Type": "application/json",
+                "Authorization": `Bearer: ${token}`
+              }
+            })
+            const data = await res.json()
+            if(data.success){
+              navigate("/client/menu")
+            }
+          }
+          catch(err){
+            console.log(err)
+          }
+        })();
+        
+      }
   })
 
   return (

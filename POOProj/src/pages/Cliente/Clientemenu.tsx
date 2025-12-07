@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from '../../Components/AppNavbar';
 import { useNavigate } from "react-router-dom";
-import "./Clientemenu.css";
+//import "./Clientemenu.css";
 
 export default function ClientMenu() {
   const navigate = useNavigate();

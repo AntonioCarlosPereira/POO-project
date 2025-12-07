@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import Navbar from '../../Components/AppNavbar';
 import ServiceCard from "../../Components/ServiceCard";
 import "./agendar.css";
+import { get } from "http";
 
 interface availableSchedules {
-  scheduleId: number;
+  scheduleId: number; 
   date: string;       
   hour: string;       
   
@@ -23,28 +24,58 @@ interface availableSchedules {
 }
 
 //Exemplo de objeto
-const api_schedules: availableSchedules[] = [
-    { 
-        scheduleId: 101, date: "2025-12-15", hour: "14:00", 
-        serviceId: 1, serviceName: "banho e tosa", price: 75.00, duration: "1 hora",
-        placeId: 10, placeName: "pet shop central", workerName: "joão tosa",
-        category: "pet shop", locationAddress: "rua das flores, 123 - centro"
-    }
-];
 
 export default function ClientAgendar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+  const [api_schedules, setApiSchedules] = useState<availableSchedules[]>([])
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(9999);
   const [placeNameFilter, setPlaceNameFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("todas");
 
-  const categories = useMemo(() => {
+
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+    try{
+      const searchData = {searchTerm, dateFilter, minPrice, maxPrice, placeNameFilter, categoryFilter}
+      const res = await fetch("/buscarAgendas", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(searchData)
+      })
+      const data = await res.json()
+      if(data.success){
+        const foundSchedules = data.itens.map((itens:any)=>({
+          scheduleId: itens.schedule.workerId,
+          date: itens.schedule.data,
+          hour: itens.hour,
+          serviceId: itens.service.id,
+          serviceName: itens.service.name,
+          price: itens.service.number,
+          duration: itens.service.duration, 
+          
+          placeId: itens.place.id,
+          placeName: itens.place.name, 
+          workerName: itens.worker.name, 
+          
+          category: itens.service.name, 
+          locationAddress: itens.place.address
+        }))
+        setApiSchedules(foundSchedules)
+      
+      }else{
+        alert("Erro Interno.")
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+    const categories = useMemo(() => {
     const all = api_schedules.map(s => s.category);
     return ["todas", ...new Set(all.map(c => c.toLowerCase()))];
   }, [api_schedules]);
-
   const filteredSlots = useMemo(() => {
     let results = api_schedules;
 
@@ -89,6 +120,7 @@ export default function ClientAgendar() {
 
         <div className="search-bar mb-4 card p-3 shadow-lg">
           <div className="input-group input-group-lg">
+            <form onSubmit={handleSearch}>
             <input
               type="text"
               className="form-control border-start-0"
@@ -96,6 +128,8 @@ export default function ClientAgendar() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
+            <button type="submit">Buscar</button>
+            </form>
           </div>
         </div>
 
@@ -175,7 +209,7 @@ export default function ClientAgendar() {
                             nenhuma agenda encontrada.
                         </div>
                     ) : (
-                        filteredSlots.map(slot => (
+                        api_schedules.map(slot => (
                             <ServiceCard key={slot.scheduleId} slot={slot} />
                         ))
                     )}
