@@ -1,59 +1,163 @@
-.historic-container {
+.appointments-container {
   padding: 20px;
-  margin-top: 70px;
+  padding-top: 70px; 
+  background-color: #fcfcfc; 
+  min-height: calc(100vh - 70px); 
 }
 
-.historic-container h2 {
+.appointments-container h2 {
   text-align: center;
-  font-size: 22px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6a503f; 
+  margin-bottom: 30px;
+}
+
+.status-filter-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 5px;
+  border-bottom: 2px solid #ff6400; 
+}
+
+.status-filter-nav button {
+  background: none;
+  border: none;
+  padding: 8px 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #6a503f; 
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.status-filter-nav button:hover:not(.active) {
+    color: #ff6400; 
+}
+
+.status-filter-nav button.active {
+  color: #ff6400;
+  border-bottom: 3px solid #ff6400;
+  font-weight: 700;
 }
 
 .historic-list {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .historic-card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  
+  background-color: #ffd1b8; 
+  padding: 15px 20px;
+  border-radius: 18px; 
+  box-shadow: 0 0 8px rgba(0,0,0,0.1); 
+  border: none; 
+
+  max-width: 100%;
+  min-width: 350px;
+  transition: transform 0.2s;
+}
+
+.historic-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ffa064; 
+  border-radius: 10px;
+  margin-right: 20px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.historic-info {
+  display: flex;
+  flex-direction: column;
+  color: #6a503f; 
+  font-weight: 500;
+  gap: 2px;
+  flex-grow: 1; 
+  margin-right: 20px;
 }
 
 .historic-info h3 {
-  margin: 0 0 8px 0;
-  font-size: 18px;
-  font-weight: bold;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ff6400; 
 }
 
 .historic-info p {
-  margin: 4px 0;
-  font-size: 14px;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6a503f;
 }
 
 .status {
-  padding: 5px 10px;
-  border-radius: 20px;
+  flex-shrink: 0; 
+  padding: 6px 15px;
+  border-radius: 12px;
   display: inline-block;
-  margin-top: 8px;
-  font-weight: bold;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  background: #ffffff;
+  border: 1px solid; 
+  text-align: center;
+}
+
+.status.solicitado {
+  color: #ffb300; 
+  border-color: #ffb300;
+}
+
+.status.aceito {
+  color: #ffb300; 
+  border-color: #ffb300;
 }
 
 .status.concluído {
-  background: #c8f7c5;
-  color: #1e8c00;
+  color: #38a838;
+  border-color: #38a838;
+}
+
+.status.recusado {
+  color: #d14747;
+  border-color: #d14747;
+}
+
+.status.agendado {
+  color: #ffb300;
+  border-color: #ffb300;
 }
 
 .status.cancelado {
-  background: #ffcccc;
-  color: #b30000;
+  color: #d14747;
+  border-color: #d14747;
 }
 
 .empty-message {
   text-align: center;
-  font-size: 16px;
-  margin-top: 30px;
-  color: #777;
+  font-size: 1.1rem;
+  margin-top: 50px;
+  color: #6a503f;
+  font-weight: 500;
 }

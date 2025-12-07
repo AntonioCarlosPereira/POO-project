@@ -4,48 +4,46 @@ import Navbar from "../../Components/AppNavbar";
 import NotificationCard from "../../Components/NotificationCard";
 import "./EstabelecimentoMenu.css";
 
-interface Notificacao {
-  id: number;
-  servico: string;
-  horario: string;
-  preco: string;
-  prestador: string;
-  cliente: string;
-}
+// ... (Interface Notificacao) ...
+
+// Dados de Mock para simular a busca pelo ID
+const mockEstabelecimentos = [
+    { id: "1", nome: "Pet Shop Central", notificacoes: [/* dados */] },
+    { id: "2", nome: "Clínica Veterinária", notificacoes: [/* dados diferentes */] },
+    { id: "3", nome: "Estética Animal Alpha", notificacoes: [/* dados diferentes */] },
+];
 
 export default function EstabelecimentoMenu() {
-  const { id } = useParams();
+  // O ID vindo do useParams é sempre uma string
+  const { id } = useParams<{ id: string }>(); 
   const navigate = useNavigate();
   const [nomeEstabelecimento, setNomeEstabelecimento] = useState("");
-  const [notificacoes, setNotificacoes] = useState<Notificacao[]>([]);
+  const [notificacoes, setNotificacoes] = useState<any[]>([]); // Usando 'any' temporariamente para simplificar
 
   useEffect(() => {
-    // Aqui virá a chamada à API para buscar dados do estabelecimento
-    // Por enquanto, dados mockados
-    setNomeEstabelecimento("Pet Shop Central");
-    
-    const mockNotificacoes: Notificacao[] = [
-      {
-        id: 1,
-        servico: "Banho e Tosa",
-        horario: "14:00",
-        preco: "R$ 80,00",
-        prestador: "João Silva",
-        cliente: "Maria Santos"
-      },
-      {
-        id: 2,
-        servico: "Consulta Veterinária",
-        horario: "16:30",
-        preco: "R$ 150,00",
-        prestador: "Dr. Pedro Lima",
-        cliente: "Carlos Souza"
-      }
-    ];
-    
-    setNotificacoes(mockNotificacoes);
-  }, [id]);
+    if (!id) return;
 
+    // Lógica CORRIGIDA: Buscar o nome do estabelecimento baseado no ID da URL
+    const estabelecimentoEncontrado = mockEstabelecimentos.find(est => est.id === id);
+
+    if (estabelecimentoEncontrado) {
+        setNomeEstabelecimento(estabelecimentoEncontrado.nome);
+        // Exemplo: Simular notificações diferentes
+        if (id === "2") {
+             setNotificacoes([{ id: 1, servico: "Vacinação", horario: "10:00", preco: "R$ 120,00", prestador: "Dr. Ana", cliente: "João" }]);
+        } else {
+             // Notificações padrão para Pet Shop Central e outros
+             setNotificacoes(estabelecimentoEncontrado.notificacoes);
+        }
+    } else {
+        setNomeEstabelecimento("Estabelecimento Não Encontrado");
+        setNotificacoes([]);
+    }
+
+  }, [id]); // Roda sempre que o ID na URL muda
+
+  // ... (handleAccept, handleReject, e o corpo do return permanecem iguais) ...
+  // ...
   const handleAccept = (notifId: number) => {
     setNotificacoes(prev => prev.filter(n => n.id !== notifId));
     alert("Serviço aceito com sucesso!");
@@ -62,7 +60,7 @@ export default function EstabelecimentoMenu() {
       
       <div className="estabelecimento-menu-container">
         <h2 className="estabelecimento-nome">{nomeEstabelecimento}</h2>
-
+        {/* ... restante do código ... */}
         <div className="menu-buttons">
           <button 
             className="btn-menu-action"
@@ -78,7 +76,7 @@ export default function EstabelecimentoMenu() {
             Gerenciar Serviços
           </button>
         </div>
-
+        {/* ... restante do código ... */}
         <div className="notificacoes-section">
           <h3 className="section-title">Notificações</h3>
           <div className="notificacoes-barra"></div>

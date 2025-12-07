@@ -53,7 +53,7 @@ export default function Register() {
             type="email"
             className="register-input"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             required
           />
 
@@ -65,17 +65,6 @@ export default function Register() {
             onChange={(e) => setSenha(e.target.value)}
             required
           />
-
-          <label className="register-label">Tipo de Conta</label>
-          <select
-            className="register-input"
-            value={tipo}
-            onChange={(e) => setTipo(e.target.value)}
-          >
-            <option value="cliente">Cliente</option>
-            <option value="prestador">Prestador de Serviço</option>
-            <option value="proprietario">Proprietário</option>
-          </select>
 
           <button type="submit" className="btn-laranja register-btn">
             Registrar
