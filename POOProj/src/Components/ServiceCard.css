@@ -1,12 +1,15 @@
+/* Atualização no seu ServiceCard.css */
 .service-card {
   display: flex;
+  justify-content: space-between; /* Distribui o conteúdo */
   align-items: center;
   background-color: #ffd1b8; /* salmão */
-  padding: 12px 18px;
+  padding: 15px 20px;
   border-radius: 18px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.25);
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
   margin-bottom: 15px;
-  max-width: 380px;
+  max-width: 100%; /* Permite que o card se expanda */
+  min-width: 350px;
 }
 
 .card-icon {
@@ -14,7 +17,8 @@
   height: 40px;
   background-color: #ffa064; /* laranja */
   border-radius: 10px;
-  margin-right: 15px;
+  margin-right: 20px;
+  flex-shrink: 0; /* Não deixa o ícone encolher */
 }
 
 .card-info {
@@ -23,8 +27,37 @@
   color: #6a503f;
   font-weight: 500;
   gap: 2px;
+  flex-grow: 1; /* Permite que as informações ocupem o espaço necessário */
 }
 
 .card-info span {
   font-size: 0.9rem;
+}
+
+.info-preco {
+    font-size: 1rem !important;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #008000; /* Verde para destacar o preço */
+}
+
+.card-action {
+    flex-shrink: 0; /* Garante que o botão fique na extrema direita */
+    margin-left: 20px;
+}
+
+.btn-reservar {
+    background-color: #ff6400; /* Laranja forte */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-reservar:hover {
+    background-color: #e05c00;
 }

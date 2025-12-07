@@ -1,6 +1,6 @@
 import React from "react";
 import ServiceCard from "../../Components/ServiceCard";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../Components/AppNavbar";
 import "./HistoricoPrestador.css";
 
 export default function HistoricoPrestador() {
@@ -37,22 +37,6 @@ export default function HistoricoPrestador() {
       <div className="prestador-historico-container">
         <h2 className="title">Histórico de Serviços</h2>
 
-        <div className="historico-lista">
-          {historico.length === 0 ? (
-            <p className="empty">Nenhum serviço finalizado ainda.</p>
-          ) : (
-            historico.map((item, index) => (
-              <ServiceCard
-                key={index}
-                servico={item.servico}
-                horario={item.horario}
-                local={item.local}
-                preco={item.preco}
-                extra={item.extra}
-              />
-            ))
-          )}
-        </div>
       </div>
     </>
   );

@@ -1,27 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./register.css";
+import "./Register.css";
+import { json } from "stream/consumers";
 
 export default function Register() {
   const navigate = useNavigate();
 
-  const [nome, setNome] = useState("");
+  const [name, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [password, setSenha] = useState("");
   const [tipo, setTipo] = useState("cliente");
+  const RegisterData = {email, password, name};
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    try {
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(RegisterData)
+      })
+      const data = await res.json()
+      if(data.success){
+        navigate("/login");
+      }
+    }
+    catch(err){
+      console.error("Erro ao fazer cadastro.")
+    }
 
-    // Aqui futuramente vai a lógica do backend
-    console.log({
-      nome,
-      email,
-      senha,
-      tipo,
-    });
-
-    navigate("/login");
+    
   };
 
   return (
@@ -35,7 +43,7 @@ export default function Register() {
           <input
             type="text"
             className="register-input"
-            value={nome}
+            value={name}
             onChange={(e) => setNome(e.target.value)}
             required
           />
@@ -53,7 +61,7 @@ export default function Register() {
           <input
             type="password"
             className="register-input"
-            value={senha}
+            value={password}
             onChange={(e) => setSenha(e.target.value)}
             required
           />

@@ -1,5 +1,5 @@
 import React from "react";
-import "./notificationcard.css";
+import "./NotificationCard.css";
 
 export default function NotificationCard({
   servico,

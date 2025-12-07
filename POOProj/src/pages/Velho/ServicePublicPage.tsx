@@ -1,5 +1,5 @@
 import ServiceCard from "./ServicePublicCard"
-import type { Service } from "../types"
+import type { Service } from "../../types"
 import "./ServicePublicPage.css"
 
 export default function ServicePublicPage() {

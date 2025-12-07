@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./prestadorMenu.css";
+import "./PrestadorMenu.css";
 
 export default function PrestadorMenu() {
   const navigate = useNavigate();

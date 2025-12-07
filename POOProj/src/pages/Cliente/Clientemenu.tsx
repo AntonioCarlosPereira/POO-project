@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from '../../Components/Navbar';
+import Navbar from '../../Components/AppNavbar';
 import { useNavigate } from "react-router-dom";
-import "./clientemenu.css";
+import "./Clientemenu.css";
 
 export default function ClientMenu() {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function ClientMenu() {
 
           <button
             className="btn btn-secondary btn-lg w-100"
-            onClick={() => navigate("/profile")}
+            onClick={() => navigate("/perfil")}
           >
             Perfil
           </button>

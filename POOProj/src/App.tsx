@@ -8,7 +8,6 @@ import Register from "./pages/Auth/Register";
 /* Client pages */
 import ClienteMenu from "./pages/Cliente/Clientemenu";
 import ClientAgendar from "./pages/Cliente/agendar";
-import ClientSearchResults from "./pages/Cliente/Resultados";
 import ClientHistoric from "./pages/Cliente/Historico";
 
 import Perfil from "./pages/Perfil/Perfil";
@@ -17,9 +16,10 @@ import PrestadorMenu from "./pages/Prestador/PrestadorMenu";
 import CadastrarServico from "./pages/Prestador/CadastrarServico";
 import Gerenciar from "./pages/Prestador/Gerenciar";
 import HistoricoPrestador from "./pages/Prestador/HistoricoPrestador";
+import ProprietarioMenu from "./pages/Proprietario/ProprietarioMenu"
 
 /* Global components */
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/AppNavbar";
 
 export default function App() {
   return (
@@ -57,14 +57,7 @@ export default function App() {
         }
       />
 
-      <Route
-        path="/client/results"
-        element={
-          // Removi a Navbar daqui para evitar duplicação, 
-          // já que ClientSearchResults (Resultados) a inclui.
-          <ClientSearchResults />
-        }
-      />
+
 
       <Route
         path="/client/historico"
@@ -119,6 +112,14 @@ export default function App() {
         element={
           <>
             <HistoricoPrestador />
+          </>
+        }
+      />
+      <Route
+        path="/proprietario"
+        element={
+          <>
+            <ProprietarioMenu />
           </>
         }
       />

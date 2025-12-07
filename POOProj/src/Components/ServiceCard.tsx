@@ -1,19 +1,45 @@
 import React from "react";
-import "./servicecard.css";
+import { Link } from "react-router-dom";
+import "./ServiceCard.css";
 
-export default function ServiceCard({ servico, horario, local, preco, extra }) {
-  return (
-    <div className="service-card">
-      <div className="card-icon"></div>
+interface AvailableSlot {
+  scheduleId: number;
+  date: string;
+  hour: string;
+  serviceName: string;
+  price: number;
+  duration: string;
+  placeName: string;
+  workerName: string;
+}
 
-      <div className="card-info">
-        <span><strong>Serviço:</strong> {servico}</span>
-        <span><strong>Horário:</strong> {horario}</span>
-        <span><strong>Local:</strong> {local}</span>
-        <span><strong>Preço:</strong> {preco}</span>
+interface ServiceCardProps {
+    slot: AvailableSlot;
+}
 
-        {extra && <span><strong>{extra.label}:</strong> {extra.value}</span>}
-      </div>
-    </div>
-  );
+export default function ServiceCard({ slot }: ServiceCardProps) {
+    return (
+        <div className="service-card">
+            <div className="card-icon"></div>
+
+            <div className="card-info">
+                <span><strong>Serviço:</strong> {slot.serviceName}</span>
+                <span><strong>Local:</strong> {slot.placeName}</span>
+                <span><strong>Prestador:</strong> {slot.workerName}</span>
+                <span className="info-hora">
+                    <strong>Quando:</strong> {slot.date} às {slot.hour}
+                </span>
+                <span><strong>Duração:</strong> {slot.duration}</span>
+                <span className="info-preco"><strong>Preço:</strong> R$ {slot.price.toFixed(2)}</span>
+            </div>
+
+            <div className="card-action">
+                <Link 
+                    to={`/client/agendar/confirmar/${slot.scheduleId}`}
+                    className="btn-reservar">
+                    Reservar
+                </Link>
+            </div>
+        </div>
+    );
 }

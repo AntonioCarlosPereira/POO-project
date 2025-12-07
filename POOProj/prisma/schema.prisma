@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+model User{
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  password String
+  place Place []
+  clientAppointments Appointment[] @relation("ClientRelation")
+  workerAppointments Appointment[] @relation("WorkerRelation")
+
+  workerSchedule Schedule[]
+}
+model Place{
+  id Int  @id @default(autoincrement())
+  userId Int 
+  name String
+  user User @relation(fields: [userId], references: [id])
+  address String
+  cnpj String
+  appointments Appointment []
+  schedules Schedule []
+  
+}
+
+model Service{
+  id Int @id @default(autoincrement())
+  name String
+  description String
+  price Float
+  duration String
+  appointments Appointment []
+  schedules Schedule []
+} 
+enum AppointmentStatus {
+  solicitado
+  aceito
+  recusado
+  concluido
+}
+
+model Appointment{
+  id Int @id @default(autoincrement())
+  clientUserId Int
+  workerUserId Int
+  serviceId Int
+  placeId Int
+  date String
+  hour String
+  status AppointmentStatus
+  client User @relation("ClientRelation",fields: [clientUserId], references: [id])
+  worker User @relation("WorkerRelation",fields: [workerUserId], references: [id])
+  service Service @relation(fields: [serviceId], references: [id])
+  place Place @relation(fields: [placeId], references: [id])
+
+}
+
+model Schedule{
+  data String
+  hour String
+  workerUserId Int
+  placeId Int
+  serviceId Int
+  worker User @relation(fields: [workerUserId], references: [id])
+  place Place @relation(fields: [placeId], references: [id])
+  service Service @relation(fields: [serviceId], references: [id])
+  @@id([workerUserId,placeId, serviceId])
+}
+

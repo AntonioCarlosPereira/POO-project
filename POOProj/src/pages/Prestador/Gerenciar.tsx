@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NotificationCard from "../../Components/NotificationCard";
-import "./gerenciar.css";
+import "./Gerenciar.css";
 
 interface Notificacao {
   id: number;

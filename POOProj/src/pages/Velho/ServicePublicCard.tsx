@@ -1,4 +1,4 @@
-import type { Service } from "../types";
+import type { Service } from "../../types";
 import "./ServicePublicCard.css";
 
 export default function ServiceCard({ img, title, date, place, price, status }: Service) {
