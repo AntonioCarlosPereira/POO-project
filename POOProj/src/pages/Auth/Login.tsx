@@ -1,15 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export default function Login() {
+
   const navigate = useNavigate();
 
+  useEffect(()=>{
+      const token = localStorage.getItem("token")
+      if(token){
+        (async()=>{
+          try{
+            const res = await fetch("/tokenVerification", {
+              method: "POST",
+              headers: {"Content-Type": "application/json",
+                "Authorization": `Bearer: ${token}`
+              }
+            })
+            const data = await res.json()
+            if(data.success){
+              navigate("/client/menu")
+            }
+          }
+          catch(err){
+            console.log(err)
+          }
+        })();
+      }
+  })
   const [email, setEmail] = useState("");
   const [password, setSenha] = useState("");
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Aqui você vai substituir pela lógica do seu backend
 
     const loginData = {email, password: password}
     
@@ -29,7 +54,10 @@ export default function Login() {
     }
     catch(err){
       console.error("Erro ao fazer login.")
-    }    
+    }
+
+    // Exemplo de redirecionamento:
+    
   };
 
   return (

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/AppNavbar";
+import NotificationCard from "../../Components/NotificationCard";
 import "./EstabelecimentoMenu.css";
 
 // ... (Interface Notificacao) ...

@@ -1,38 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
+import { json } from "stream/consumers";
 
 export default function Register() {
   const navigate = useNavigate();
 
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [name, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setSenha] = useState("");
+  const [tipo, setTipo] = useState("cliente");
+  const RegisterData = {email, password, name};
 
-  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-
-    const RegisterData = { email, password, name };
-
     try {
-      const res = await fetch("http://localhost:3001/register", {
+      const res = await fetch("/register", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(RegisterData)
-      });
-      
-      const data = await res.json();
-
-      if (res.ok) {
+      })
+      const data = await res.json()
+      if(data.success){
         navigate("/login");
-      } else {
-        console.error("Erro no registro:", data.error || data.message);
-        alert(data.error || "Erro ao tentar registrar.");
       }
-    } catch(err) {
-      console.error("Erro ao conectar ou processar o registro.", err);
-      alert("Não foi possível conectar ao servidor.");
     }
+    catch(err){
+      console.error("Erro ao fazer cadastro.")
+    }
+
+    
   };
 
   return (
@@ -47,7 +44,7 @@ export default function Register() {
             type="text"
             className="register-input"
             value={name}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} 
+            onChange={(e) => setNome(e.target.value)}
             required
           />
 
@@ -65,7 +62,7 @@ export default function Register() {
             type="password"
             className="register-input"
             value={password}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} 
+            onChange={(e) => setSenha(e.target.value)}
             required
           />
 

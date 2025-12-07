@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/AppNavbar";
 import "./ProprietarioMenu.css";
+import { json } from "stream/consumers";
 
 interface Estabelecimento {
   id: number;
@@ -14,14 +15,36 @@ export default function ProprietarioMenu() {
   const [estabelecimentos, setEstabelecimentos] = useState<Estabelecimento[]>([]);
 
   useEffect(() => {
-    // Dados mockados
-    const mockData: Estabelecimento[] = [
-      { id: 1, nome: "Pet Shop Central", endereco: "Rua das Flores, 123" },
-      { id: 2, nome: "Clínica Veterinária", endereco: "Av. Brasil, 456" },
-      { id: 3, nome: "Estética Animal Alpha", endereco: "Rua da Paz, 789" }, // Adicionado mais um para teste
-    ];
+    const carregarDados= async()=>{
+      let token = localStorage.getItem("token") 
+      if(token)
+        try{
+          const res = await fetch("meusEstabelecimentos",{
+            method: "GET",
+            headers: {"Content-Type": "application/json",
+              "Authorization": `Bearer: ${token}`
+            },
+          })
+          const data = await res.json()
+          if(data.success){
+            console.log(data.itens)
+            const lista = data.itens.map((estData:any)=>({
+              id: estData.id,
+              nome: estData.name,
+              endereco: estData.address
+            }))
+            setEstabelecimentos(lista)
+          }
+        }
+        catch(err){
+          console.log(err)
+        }
+      else{
+        navigate("/login")
+      }
+    }
+    carregarDados()
     
-    setEstabelecimentos(mockData);
   }, []);
 
   const handleCriarEstabelecimento = () => {// Verifique no console do navegador se o ID está correto

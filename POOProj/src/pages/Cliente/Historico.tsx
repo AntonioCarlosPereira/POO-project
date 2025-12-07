@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import Navbar from "../../Components/AppNavbar";
-import "./Historico.css"; 
+import "./Historico.css";
 
 interface ScheduleItem {
   id: number;
