@@ -1,16 +1,97 @@
-.gerenciar-page {
-  padding: 30px;
+/* Gerenciar.css */
+
+/* --- CORREÇÃO DE OVERFLOW HORIZONTAL GERAL --- */
+body, html {
+    overflow-x: hidden; 
 }
 
-.gerenciar-page h2 {
-  margin-bottom: 20px;
+/* --- ESTILOS DO POP-UP DE NOTIFICAÇÃO (SUCESSO/ERRO) --- */
+.custom-popup-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050; 
+    
+    /* Cores definidas no JSX via bg-success/bg-danger, mas o estilo base é aqui */
+    color: white; 
+    
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    animation: fadeout 3s forwards; 
 }
 
+@keyframes fadeout {
+    0% { opacity: 1; }
+    80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+/* --- ESTILOS PRINCIPAIS DO CONTAINER (FUNDO LARANJA CLARO) --- */
+.gerenciar-container {
+  padding: 20px;
+  padding-top: 70px; 
+  background-color: #ffd1b8; /* Laranja Claro */
+  min-height: calc(100vh - 70px); 
+}
+
+/* Título: Laranja Escuro/Marrom */
+.gerenciar-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6a503f; 
+  margin-bottom: 30px;
+}
+
+/* Estilo para o aviso de "Nenhuma solicitação" */
 .sem-solicitacoes {
-  color: #777;
-  font-style: italic;
+    color: #6a503f;
+    font-size: 1.1rem;
 }
+
+/* Estilizando o CARD (aplicado ao card de "Sem Solicitações" e, idealmente, dentro do NotificationCard) */
+.card {
+  background-color: #ffffff; 
+  border: 1px solid #ff640033; 
+  border-radius: 18px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+/* --- Estilos Sugeridos para o NotificationCard (para adaptação de cores) --- */
 
 .notification-card {
-  margin-bottom: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ff6400; 
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.notification-card-info strong {
+    color: #6a503f; 
+}
+
+/* Botão Aceitar (Verde padrão para sucesso) */
+.btn-accept {
+    background-color: #4CAF50 !important; 
+    border-color: #4CAF50 !important;
+    color: white;
+}
+.btn-accept:hover {
+    background-color: #3e8e41 !important;
+    border-color: #3e8e41 !important;
+}
+
+/* Botão Recusar (Laranja do projeto para ação de "rejeitar") */
+.btn-reject {
+    background-color: #FF6400 !important; 
+    border-color: #FF6400 !important;
+    color: white;
+}
+.btn-reject:hover {
+    background-color: #cc5000 !important;
+    border-color: #cc5000 !important;
 }
